@@ -7,6 +7,8 @@ Add in Temp, wind, humidity and UV into list in HTML
 DONE
 LOGO DONE
 
+Add longitude/latitude from geoCoding fetch request. Turn city name into lat/lon.
+
 Now add 5 day rolling forecast?
 
 
