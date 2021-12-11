@@ -1,7 +1,8 @@
 var timeDisplayEl = $("#time");
 var city = document.querySelector("#city");
 var mainText = document.querySelector("#mainText");
-var invalidFeedback = document.querySelector(".feedback")
+var invalidFeedback = document.querySelector(".feedback");
+
 console.log(mainText);
 
 function displayTime() {
@@ -25,14 +26,32 @@ function getWeather() {
       })
       .then(function (data) {
         mainText.textContent = "Happy " + today + "! Here's the weather for " + data.name;
+     
+    
+        console.log(weatherIcon);
+        var htmlTemplate = 
+       `<p>The temperature is ${data.main.temp}.<p>
+       <p>The wind speed is ${data.wind.speed}.<p>
+       <p>The humidity is ${data.main.humidity}.<p>
+     
+       <div id="icon"><img id="weatherIcon" src="" alt="Weather icon"></div>`
+      
+       $('#currentWeather').append(htmlTemplate);
+
+       var weatherIcon = data.weather[0].icon;
+       var iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+       $("#weatherIcon").attr("src", iconUrl);
+
+       //append string HTML with jQuery
+$('#issues').append(htmlTemplate);
+
         for (var i = 0; i<data.length; i++) {
-            console.log(data[i].name);
+        
+
           }
-          console.log(data);
           //Append the li element to the id associated with the ul element.
         })
       };
-
 
 function buttonClickHandler(event){
     event.preventDefault();
