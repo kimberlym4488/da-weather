@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="Assets/CSS/style.css" />
-    <title>Weather API</title>
+    <title>Today's Weather!</title>
   </head>
 
   <body>
@@ -40,25 +40,25 @@
     </nav>
     </header>
   
-  <div class="container">
+  <div class="container ">
     <div class="row">
-          <div class="col-4 card">
-            <div class="card-header" style="font-style: bold; font-size:2rem;">
+          <div class="col-3 card ">
+            <div class="card-header " style="font-style: bold; font-size:2rem;">
               Look up a city!
             </div>
           
-          <form class="was-validated testing">
-            <div class="mb-3">
-              <input class="form-control" id="city" placeholder="Enter a city to get started!"></input>
+          <form class=" was-validated testing">
+            <div class="mb-3 ">
+              <input class="form-control inputCity" id="city" placeholder="Enter a city to get started!"></input>
               <div class="feedback"></div>
             </div>
           <div class="mb-3">
             <button class="btn btn-primary" id="btn" type="submit" style="width:100%" >Search</button>
           </div>
           
-          <div class="card">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">The city you last searched goes here</li>
+          <div class="card ">
+            <ul class="list-group  list-group-flush">
+              <li class="list-group-item" id="cities">Your recent searches:</li>
            
             </ul>
           </div>
@@ -66,64 +66,23 @@
       </div>
      
 
-<div class="col-8">
-  <div class="col card">
-    <div class="container text-center"  id="mainText" style="font-style: bold; font-size:2rem;">
-      <div id = "mainText"></div>
-      Start searching now!
+<div class="col-9 ">
+  <div class="col card ">
+    <div class="container text-center "  id="mainText" style="font-style: bold; font-size:2rem;">
+      <div id = "mainText">
+      Start searching now!</div>
     </div>
-    <ul class="list-group text-center">
-      <li id = "currentWeather" style="list-style-type:none"></li>
-    </ul>
-
-    <div class="container text-center align-items-center" style="font-style: bold; font-size:2rem;">
-      5-day forecast
-       
+   
+      <li class="list-group text-center " id = "currentWeather" style="list-style-type:none"></li>
+    
+      <p id="fiveDayForecast"></span></p>
+    <div class="container text-center align-items-center "  style="font-style: bold; font-size:2rem;">
+   
      
-  <main class="container-fluid">
-    <div class ="row d-flex justify-content-center">
-  <div class="card days" style="width: 18rem;">
-      <img src="#" class="card-img-top" alt="Weather Icon">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">City 1</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <img src="#" class="card-img-top" alt="Weather Icon">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">City 2</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <img src="#" class="card-img-top" alt="Weather Icon">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">City 3</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <img src="#" class="card-img-top" alt="Weather Icon">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">City 4</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <img src="#" class="card-img-top" alt="Weather Icon">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">City 5</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</main>
+    <main class="d-flex row justify-content-center " id="dailyContainer">
+      
+    
+    </main>
   </div>
 </div>
    

@@ -1,3 +1,58 @@
-text{
-    
+*{
+    border:none;
+    box-shadow:none;
 }
+
+
+
+p{
+    font-size:1rem;
+    line-height:normal;
+    align-self:center;
+}
+
+
+#mainText{
+   
+    background-color:#467599;
+    color:white;
+    box-shadow:none;
+    padding:.75rem
+}
+    
+#currentWeather{
+    padding-top:1rem;
+
+   
+}
+
+
+
+.card {
+    border:none;
+    box-shadow:none;
+}
+
+#fiveDayForecast{
+  
+   padding-top:2rem;
+ 
+   font-style:bold;
+   font-weight:bolder;
+   font-size:2rem;
+}
+
+#icon{
+    border-bottom:#467599 3px solid;
+ }
+
+ .individualDays{
+     border:2px solid rgb(29,51,84,.5);
+     border-radius:10px;
+     margin:1rem;
+     padding-top:1rem;
+ }
+
+ #btn{
+     background-color: #467599;
+ }
