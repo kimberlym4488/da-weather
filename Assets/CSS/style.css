@@ -2,20 +2,20 @@
     background-color:none;
     z-index:100;
 }
-
+/*Was trying to add a background image but failed*/
 .imgwrap {
     overflow: hidden;
     position: relative;
   }
   
-
 body{
     border:none;
     box-shadow:none;
     background-color:transparent;
 }
+
 .card-header{
-background-color:transparent;
+    background-color:transparent;
 }
 
 
@@ -25,25 +25,19 @@ p{
     align-self:center;
     background-color:transparent;
 }
-
-
+/*Header text*/
 #mainText{
-   
     background-color:#467599;
     color:white;
     box-shadow:none;
     padding:.75rem;
 }
-    
+ /*Current weather section*/   
 #currentWeather{
     padding-top:1rem;
     background-color:transparent;
-
-   
 }
-
-
-
+/*Five day Cards*/
 .card {
     border:none;
     box-shadow:none;
@@ -51,20 +45,18 @@ p{
 }
 
 #fiveDayForecast{
-  
    padding-top:2rem;
- 
    font-style:bold;
    font-weight:bolder;
    font-size:2rem;
    background-color:transparent;
 }
-
+/*Icons for weather types*/
 #icon{
     border-bottom:#467599 3px solid;
     background-color:transparent;
  }
-
+/*Borders and sizing for five days*/
  .individualDays{
      border:2px solid rgb(29,51,84,.5);
      border-radius:10px;
@@ -72,8 +64,7 @@ p{
      padding-top:1rem;
      background-color:transparent;
  }
-
+/*search button*/
  #btn{
      background-color: #467599;
-     
  }
