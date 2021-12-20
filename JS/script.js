@@ -1,3 +1,4 @@
+//Variable List
 var timeDisplayEl = $("#time");
 var city = document.querySelector("#city");
 var cities = document.querySelector("#cities");
@@ -18,11 +19,13 @@ var listItems =
 $("#cities").append(listItems);
 }
 
+//Displays the time and date in the top right hand corner
 function displayTime() {
     var now = moment().format('MMMM Do YYYY, h:mm:ss a');
     timeDisplayEl.text(now);
 }
 
+//Displays the current day!
 setInterval(displayTime, 1000);
 var today = moment().format("dddd");
 
@@ -39,7 +42,7 @@ function getWeather(latitude, longitude) {
         //this object contains all the data we requested. 
       })
     } 
-     
+ //Adds content into the current weather card    
 function printMainContainer(data){
     mainText.textContent = "Happy " + today + "! Here's today's weather in " + city.value + ".";
     fiveDayForecast.textContent="Here's your 5 day forecast!"
@@ -55,7 +58,7 @@ function printMainContainer(data){
    $("#weatherIcon").attr("src", iconUrl);
 
   
-    //Add contents into daily cards.
+    //Add contents into 5 day cards
     for (var i = 1; i<6; i++) {
     
      data.daily[i].dt=moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
@@ -74,6 +77,7 @@ function printMainContainer(data){
     }
     
 }
+//Get the latitude and longitude when a city name is entered.
 function getLatLon(){
     var requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city.value}&appid=a059151d000029215400bdaa7965fbc2`;
     
@@ -96,6 +100,7 @@ function getLatLon(){
       })
       };
 
+      //need to improve this local storage functionality.
 function buttonClickHandler(event){
     event.preventDefault();
     $('#dailyContainer').empty();
@@ -117,5 +122,6 @@ $("#cities").append(listItems);
         }
 }
 
+//Displays on page load - event listener for the search button, and init() function runs to view and update local storage. 
 document.getElementById('btn').addEventListener("click", buttonClickHandler);
 init();

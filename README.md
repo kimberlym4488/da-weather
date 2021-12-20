@@ -1,47 +1,43 @@
-# da-weather
-Homework 6 - Weather API JS
+# da-Weather
+A live weather site with a 5 day forecast!
 
 ## Project Homepage
-https://kimberlym4488.github.io/calendar-js-scheduling/
+https://kimberlym4488.github.io/da-weather/
 
 ## Project documentation URL
-https://github.com/kimberlym4488/calendar-js-scheduling
+https://github.com/kimberlym4488/da-weather
 
 ## Project Description
-This schedule will enable a user to add to-do's at the beginning (and throughout) the work-day of 9 a.m. to 5 p.m.
-
->Blocks are color coded so you can easily see where you are in the day (Green)
-
->To-do's are saved quickly.
-
->To-do's can be reset quickly.
+This site allows you to view current weather and a five day forecast. As a new developer, "da-Weather" taught me how to incorporate a third-party-API (OpenWeather.org) into a page. I also learned how to convert a city name into a latitude and longitude, live with JavaScript and jQuery! It was fun to expirement with the different parameters provided by the API's and implement the content to the page in a split-second. 
 
 # Project Previews
 ## Home Page
 (Click Image to see live page)
 
->[![Preview-Image-1](https://user-images.githubusercontent.com/92805933/145342004-d2baf99e-e30e-4b99-9e53-416ff4f2cf5f.PNG)](https://kimberlym4488.github.io/calendar-js-scheduling/)
+>[![Preview-Image-1](https://user-images.githubusercontent.com/92805933/145954452-9798cf11-f2d7-4e85-9648-7cc1c7792f61.PNG)](https://kimberlym4488.github.io/da-weather/)
 
 ## Local Storage - Save
 (Click Image to see live page)
 
->[![Local-Storage-1](https://user-images.githubusercontent.com/92805933/145341943-731ddb70-4a8d-4de3-8a1b-5be432406c49.PNG)](https://kimberlym4488.github.io/calendar-js-scheduling/)
+>[![Preview-Image-2](https://user-images.githubusercontent.com/92805933/145954504-d07faf35-c326-404d-9532-0dad5c32e098.PNG)](https://kimberlym4488.github.io/da-weather/)
 
 # Features
-The planner has a few features to improve the user experience
+"da-Weather!" will show the current weather along with a 5day forecast. Cute icons give you a visual feeling to the weather as well.
 
-&#10004; Reset button allows you to immediately clear local storage. Click it twice to also delete your current text in the boxes.
+&#10004; Local storage allows you to quickly search previous cities again.
 
-&#10004; Current date and time always updates.
+&#10004; Current date and time always updates in the navBar.
 
-&#10004; Boxes are color coded to give immediate visual contrast to your day.
+&#10004; 5 day forecast boxes are in nicely spaced, clearly defined sections.
 
-&#10004; Data you enter can be saved with just the click of a button.
+&#10004; The city you enter and the day of the week appear in the header after you search.
+
+&#10004; Dark blue color palette and subtle borders make for clean styling.
 
 ## Summary
-This planner was a good experience for me to implement jQuery. I modified the existing CSS slightly but would like to make more updates before the end of 2021. 
+"da-Weather" was really fun to work on! I did struggle quite a bit with local storage but I felt really good about dynamically populating the 5 day forecast boxes using jQuery and template literals. This really strengthened my ability to use template literals to return specific API data to the page. 
 
-I also would like to work on clearing the entries "without" having to click the reset button twice. Attempted to do a page reload inside JS but it wouldn't stop reloading. 
+I intend to work more on the local storage and add in a nice background image as well.  
 
 ## Author Name
 Kim Moran

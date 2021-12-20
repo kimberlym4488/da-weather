@@ -1,14 +1,29 @@
 *{
-    border:none;
-    box-shadow:none;
+    background-color:none;
+    z-index:100;
 }
 
+.imgwrap {
+    overflow: hidden;
+    position: relative;
+  }
+  
+
+body{
+    border:none;
+    box-shadow:none;
+    background-color:transparent;
+}
+.card-header{
+background-color:transparent;
+}
 
 
 p{
     font-size:1rem;
     line-height:normal;
     align-self:center;
+    background-color:transparent;
 }
 
 
@@ -17,11 +32,12 @@ p{
     background-color:#467599;
     color:white;
     box-shadow:none;
-    padding:.75rem
+    padding:.75rem;
 }
     
 #currentWeather{
     padding-top:1rem;
+    background-color:transparent;
 
    
 }
@@ -31,6 +47,7 @@ p{
 .card {
     border:none;
     box-shadow:none;
+    background-color:transparent;
 }
 
 #fiveDayForecast{
@@ -40,10 +57,12 @@ p{
    font-style:bold;
    font-weight:bolder;
    font-size:2rem;
+   background-color:transparent;
 }
 
 #icon{
     border-bottom:#467599 3px solid;
+    background-color:transparent;
  }
 
  .individualDays{
@@ -51,8 +70,10 @@ p{
      border-radius:10px;
      margin:1rem;
      padding-top:1rem;
+     background-color:transparent;
  }
 
  #btn{
      background-color: #467599;
+     
  }
