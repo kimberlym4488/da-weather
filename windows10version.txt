@@ -1,0 +1,15 @@
+/*
+if (data.current.humidity > 60){
+   $(".humidity").addClass(".red")
+ }
+else if (data.current.humidity <59 && data.current.humidity>30 ){
+  $(".humidity").addClass(".yellow")
+}
+
+else if (data.current.humidity <29 ){
+  $(".humidity").addClass(".green")
+}
+else {
+  $(".humidity").addClass(".nocolor")
+}
+*/ 

@@ -50,33 +50,48 @@ function printMainContainer(data){
     var htmlTemplate = 
     `<p>Temp: ${data.current.temp} degrees Fahrenheit.<p>
     <p>Wind Speed: ${data.current.wind_speed} mph.<p>
-    <p>Humidity: ${data.current.humidity}.<p>
+    <p class="humidity">Humidity: ${data.current.humidity}.</p>
     <div id="icon"><img id="weatherIcon" src="" alt="Weather icon"></div>`
     $('#currentWeather').append(htmlTemplate);
     var weatherIcon = data.current.weather[0].icon;
    var iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
    $("#weatherIcon").attr("src", iconUrl);
 
-  
+   console.log($(".humidity").innerHTML)
+if (data.current.humidity > 60){
+  document.querySelector(".humidity").style.background="red";
+  document.querySelector(".humidity").style.color="white";
+ };
+if (data.current.humidity <59 & data.current.humidity>30 ){
+  document.querySelector(".humidity").style.background="yellow";
+  document.querySelector(".humidity").style.color="black";
+
+};
+
+if (data.current.humidity <29 ){
+  document.querySelector(".humidity").style.background="green";
+  document.querySelector(".humidity").style.color="white";
+};
+    
     //Add contents into 5 day cards
     for (var i = 1; i<6; i++) {
     
      data.daily[i].dt=moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
-    var dailyTemplate =
-    `<div class="card days individualDays " style="width: 18rem;">
+    var dailyTemplate=
+    `<div class="col-12 col-sm-5 col-md-3 days individualDays">
     <div class="card-body ">
-      <h5 class="card-title">Date: ${data.daily[i].dt}</h5>
-      <p class="card-text">Temp: ${data.daily[i].temp.day} degrees Fahrenheit</p>
-      <p class="card-text">Wind speed: ${data.daily[i].wind_speed}  mph</p>
+      <p class="card-title">Date: ${data.daily[i].dt}<p>
+      <p class="card-text">Temp: ${data.daily[i].temp.day} degrees F</p>
+      <p class="card-text">Wind: ${data.daily[i].wind_speed}  mph</p>
       <p class="card-text">Humidity: ${data.daily[i].humidity}</p>
       <div><img class="dailyWeatherIcon" src="https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png" alt="Weather icon"></div>
       </div>
     </div>`
   //append string HTML with jQuery
     $('#dailyContainer').append(dailyTemplate);
+
     }
-    
-}
+  }   
 //Get the latitude and longitude when a city name is entered.
 function getLatLon(){
     var requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city.value}&appid=a059151d000029215400bdaa7965fbc2`;

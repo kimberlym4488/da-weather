@@ -1,55 +1,60 @@
 *{
     background-color:none;
-    z-index:100;
+    text-shadow:1px 1px 0 rgba(255, 255, 255, 0.4);
+
 }
 /*Was trying to add a background image but failed*/
-.imgwrap {
-    overflow: hidden;
-    position: relative;
-  }
   
 body{
     border:none;
     box-shadow:none;
-    background-color:transparent;
+    background-color:lightblue;
 }
 
 .card-header{
-    background-color:transparent;
+    background-color:white;
 }
-
 
 p{
     font-size:1rem;
-    line-height:normal;
+    line-height:small;
     align-self:center;
     background-color:transparent;
+    margin-bottom:.25rem;
 }
 /*Header text*/
 #mainText{
-    background-color:#467599;
-    color:white;
+    background-color:white;
+    color:black;
     box-shadow:none;
     padding:.75rem;
 }
  /*Current weather section*/   
 #currentWeather{
     padding-top:1rem;
-    background-color:transparent;
+    background-color:white;
+    color:black;
 }
 /*Five day Cards*/
 .card {
     border:none;
     box-shadow:none;
     background-color:transparent;
+    color:black;
+}
+
+.sidebar{
+    background-color: white;
 }
 
 #fiveDayForecast{
-   padding-top:2rem;
-   font-style:bold;
-   font-weight:bolder;
-   font-size:2rem;
+    size:small;
+   padding-top:1rem;
+   font-weight:bold;
+   font-size:1.5rem;
    background-color:transparent;
+   color:black;
+   text-align:center;
 }
 /*Icons for weather types*/
 #icon{
@@ -58,13 +63,55 @@ p{
  }
 /*Borders and sizing for five days*/
  .individualDays{
-     border:2px solid rgb(29,51,84,.5);
+     size:small;
      border-radius:10px;
-     margin:1rem;
+     margin:.30rem;
      padding-top:1rem;
-     background-color:transparent;
+     padding-left:0rem;
+     padding-right:0rem;
+     background-color:rgb(255,255,255);
+     color:black;
+     box-shadow:0 3px 3px rgb(0,0,0,.5);
  }
 /*search button*/
  #btn{
      background-color: #467599;
+ }
+
+ .container{
+     background-color:transparent;
+ }
+
+ .card-text{
+     padding:0rem;
+     line-height:normal;
+     margin-bottom:none;
+ }
+
+ .card-body{
+     padding:0rem;
+ }
+
+ .humidity .green{
+     color:green;
+ }
+
+ .humidity .yellow{
+     color:yellow;
+ }
+
+ p .humidity .red{
+     color:red;
+     background-color:yellow;
+ }
+
+ .humidity .nocolor{
+     color:white;
+ }
+
+ .dailyWeatherIcon{
+     height:4rem;
+     width:auto;
+     padding:0rem;
+
  }
