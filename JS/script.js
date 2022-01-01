@@ -8,17 +8,10 @@ var invalidFeedback = document.querySelector(".feedback");
 var APIkey = "a059151d000029215400bdaa7965fbc2"
 var latitude = '';
 var longitude = '';
-console.log(mainText);
 var citiesList=[];
 var dailyHumidity="";
-
-function init(){
-city.value = JSON.parse(localStorage.getItem(citiesList));
-console.log(citiesList);
-var listItems = 
-`<li class="list-group-item btnStorage">${citiesList}</li>`
-$("#cities").append(listItems);
-}
+var cityName=""
+var searchHistoryList=".searchHistoryList"
 
 //Displays the time and date in the top right hand corner
 function displayTime() {
@@ -103,34 +96,75 @@ function getLatLon(){
     
     fetch(requestUrl)
       .then(async function (response) {
-        if(response.ok) {
         const data = await response.json();
       //for (var i = 0; i<data.length; i++) {
-            console.log(data)
+            if (data.length<1) {
+              invalidFeedback.innerHTML="Please enter a valid city"
+              return
+            }
             latitude = data[0].lat;
             longitude = data[0].lon;
-            console.log(longitude);
-            console.log(latitude);
+            cityName=data[0].name;
+            setFavorite(cityName);
             getWeather(latitude,longitude);
             return;
-        }
-        else{
-          invalidFeedback.innerHTML = "Please enter a valid city."
-        }
-      })
-      };
+        })
+      }
+  
+    function setFavorite(cityName){
+      var favorites=JSON.parse(localStorage.getItem("favorites"));
+      console.log(favorites);
+      var citySaved={
+        name:cityName
+      }
+      if (favorites === null){
+        favorites=[citySaved];
+      } else if (!favorites.some(item =>item.name === cityName.name)){
+        favorites.push(citySaved);
+      }
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      console.log(favorites);
+    
+      return;
+     
+    } 
 
+    function getFavorites() {
+      var favoritesList =
+        JSON.parse(localStorage.getItem("favorites"));
+
+    if (favoritesList === null) {
+          $("#cities").text("You haven't added any cities yet. Click to refresh")
+          return;
+    }
+    else{
+    for (var i = 0; i < favoritesList.length; i++) {
+     
+      var viewFavorites = `
+    <p class="searchHistoryList">${favoritesList[i].name}</p>`
+      $("#cities").append(viewFavorites);
+ 
+        }    
+      }
+}
+
+// Clicking on a button in the search history sidebar
+// will populate the dashboard with info on that city
+$(".searchHistoryList").on("click","button", function() {
+  console.log("You clicked the button")
+  console.log($(this).data("value"));
+  var value = $(this).data("value");
+ getLatLonAgain(value)
+
+});
       //need to improve this local storage functionality.
 function buttonClickHandler(event){
-    event.preventDefault();
+  event.preventDefault();
     $('#dailyContainer').empty();
     $('#currentWeather').empty();
-    citiesList.push(city.value);    
-  localStorage.setItem("CityName",JSON.stringify(citiesList));
-  console.log(citiesList);
-  var listItems = 
-`<li class="list-group-item citiesList btnStorage">${citiesList}</li>`
-$("#cities").append(listItems);
+   
+    //I push the city.value into the citiesList array.
+    //Next, I set that into the citiesList local storage 
 
 //If nothing is entered, alert pops up to enter a search term.
         if (city.value==='') {
@@ -142,6 +176,14 @@ $("#cities").append(listItems);
         }
 }
 
+function viewFavorites(){
+  window.location.reload();
+}
 //Displays on page load - event listener for the search button, and init() function runs to view and update local storage. 
+
+document.querySelector(".list-group-flush").addEventListener("click", viewFavorites);
 document.getElementById('btn').addEventListener("click", buttonClickHandler);
-init();
+getFavorites();
+
+
+

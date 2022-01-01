@@ -29,8 +29,14 @@ p{
     margin-bottom:.25rem;
 }
 
+#cities{
+    color:#467599;
+    font-weight:bold;
+    font-size:1.1rem;
+}
 .citiesList{
     border-radius:10px;
+    width:auto;
 }
 /*Header text*/
 #mainText{
