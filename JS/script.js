@@ -61,7 +61,7 @@ function printMainContainer(data){
     //Add contents into 5 day cards
     for (var i = 1; i<6; i++) {
     
-     data.daily[i].dt=moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
+    data.daily[i].dt=moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
     var dailyTemplate =
     `<div class="card days individualDays " style="width: 18rem;">
     <div class="card-body ">
