@@ -4,7 +4,13 @@
 
 }
 /*Was trying to add a background image but failed*/
-  
+.navbar{
+    padding:1rem;
+}
+.navbar-brand{
+    font-size:2rem;
+}
+
 body{
     border:none;
     box-shadow:none;
@@ -22,9 +28,12 @@ p{
     background-color:transparent;
     margin-bottom:.25rem;
 }
+
+.citiesList{
+    border-radius:10px;
+}
 /*Header text*/
 #mainText{
-    background-color:white;
     color:black;
     box-shadow:none;
     padding:.75rem;
@@ -32,7 +41,6 @@ p{
  /*Current weather section*/   
 #currentWeather{
     padding-top:1rem;
-    background-color:white;
     color:black;
 }
 /*Five day Cards*/
@@ -79,7 +87,7 @@ p{
  }
 
  .container{
-     background-color:transparent;
+     border-radius:20px;
  }
 
  .card-text{
@@ -90,6 +98,12 @@ p{
 
  .card-body{
      padding:0rem;
+ }
+
+ .rightside{
+     border-radius:20px;
+     background-color:white;
+     color:black;
  }
 
  .humidity .green{
