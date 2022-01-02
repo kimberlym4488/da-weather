@@ -80,7 +80,7 @@ else {
     
     data.daily[i].dt=moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
     var dailyTemplate =
-    `<div class="card days individualDays ">
+    `<div class="col-12 col-sm-5 col-md-3 col-lg col-xl days individualDays ">
     <div class="card-body ">
       <p class="card-title">Date: ${data.daily[i].dt}<p>
       <p class="card-text">Temp: ${data.daily[i].temp.day} degrees F</p>
@@ -119,9 +119,6 @@ console.log(city)
     })
 }  
       
-
-
-
  // store search history, only want to store 5
 let browserHistory = JSON.parse(window.localStorage.getItem("history")) || [];
     for (let i = 0; i < 6; i++) {
@@ -145,7 +142,8 @@ function createButton(city) {
       $("#cityList").append(newButton);
 }
 //if you click a city in the recent searches section, it should also send you to the starter function to convert city to Lat/Lon
-$(document).on("click", ".citybtn", function () {
+$(document).on("click", ".citybtn", function (event) {
+  event.preventDefault();
   console.log("You clicked the citybtn")
   searchOpenWeather($(this).val());
   console.log("You clicked the citybtn")
