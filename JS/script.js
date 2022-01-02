@@ -1,7 +1,5 @@
 //Variable List
 var timeDisplayEl = $("#time");
-var city = document.querySelector("#city");
-var cities = document.querySelector("#cities");
 var mainText = document.querySelector("#mainText");
 var fiveDayForecast=document.querySelector("#fiveDayForecast")
 var invalidFeedback = document.querySelector(".feedback");
@@ -9,9 +7,7 @@ var APIkey = "a059151d000029215400bdaa7965fbc2"
 var latitude = '';
 var longitude = '';
 var citiesList=[];
-var dailyHumidity="";
 var cityName=""
-var searchHistoryList=".searchHistoryList"
 
 //Displays the time and date in the top right hand corner
 function displayTime() {
@@ -19,9 +15,13 @@ function displayTime() {
     timeDisplayEl.text(now);
 }
 
+console.log("page loaded")
+
 //Displays the current day!
 setInterval(displayTime, 1000);
 var today = moment().format("dddd");
+
+$(document).ready(function () {
 
 function getWeather(latitude, longitude) {
     // Insert the API url to get a list of weather data
@@ -35,12 +35,16 @@ function getWeather(latitude, longitude) {
         return;
         //this object contains all the data we requested. 
       })
-    } 
+  }
+
  //Adds content into the current weather card    
 function printMainContainer(data){
-    mainText.textContent = "Happy " + today + "! Here's today's weather in " + city.value + ".";
+
+  console.log(data)
+    
     fiveDayForecast.textContent="Here's your 5 day forecast!"
-  
+    $('#dailyContainer').empty();
+    $('#currentWeather').empty();
     var htmlTemplate = 
     `<p>Temp: ${data.current.temp} degrees Fahrenheit.<p>
     <p>Wind Speed: ${data.current.wind_speed} mph.<p>
@@ -76,7 +80,7 @@ else {
     
     data.daily[i].dt=moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
     var dailyTemplate =
-    `<div class="card days individualDays " style="width: 18rem;">
+    `<div class="card days individualDays ">
     <div class="card-body ">
       <p class="card-title">Date: ${data.daily[i].dt}<p>
       <p class="card-text">Temp: ${data.daily[i].temp.day} degrees F</p>
@@ -88,77 +92,75 @@ else {
   //append string HTML with jQuery
     $('#dailyContainer').append(dailyTemplate);
     }
-  }   
+}   
 
 //Get the latitude and longitude when a city name is entered.
-function getLatLon(){
-    var requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city.value}&appid=a059151d000029215400bdaa7965fbc2`;
-    
+function searchOpenWeather(city){
+console.log(city)
+    var requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=a059151d000029215400bdaa7965fbc2`;
+
     fetch(requestUrl)
-      .then(async function (response) {
-        const data = await response.json();
-      //for (var i = 0; i<data.length; i++) {
-            if (data.length<1) {
-              invalidFeedback.innerHTML="Please enter a valid city"
-              return
-            }
-            latitude = data[0].lat;
-            longitude = data[0].lon;
-            cityName=data[0].name;
-            setFavorite(cityName);
-            getWeather(latitude,longitude);
-            return;
-        })
-      }
+    .then(async function (response) {
+      var data = await response.json();
   
-    function setFavorite(cityName){
-      var favorites=JSON.parse(localStorage.getItem("favorites"));
-      console.log(favorites);
-      var citySaved={
-        name:cityName
-      }
-      if (favorites === null){
-        favorites=[citySaved];
-      } else if (!favorites.some(item =>item.name === cityName.name)){
-        favorites.push(citySaved);
-      }
-      localStorage.setItem("favorites", JSON.stringify(favorites));
-      console.log(favorites);
-    
-      return;
-     
-    } 
+      //prevents dup cities and add this city.
+      if (browserHistory.indexOf(city) === -1) {
+        browserHistory.push(city);
+        window.localStorage.setItem("history", JSON.stringify(browserHistory));
+       window.location.reload();
+      } 
+     //create variables for each item we'll need to populate our html   
+        latitude = data[0].lat;
+        longitude = data[0].lon;
+        cityName=data[0].name;
+        mainText.textContent = "Happy " + today + "! Here's today's weather in " + cityName + ".";
+        //got to the next step, convert the city name to lat and lon.
+        getWeather(latitude,longitude);
+    })
+}  
+      
 
-    function getFavorites() {
-      var favoritesList =
-        JSON.parse(localStorage.getItem("favorites"));
 
-    if (favoritesList === null) {
-          $("#cities").text("You haven't added any cities yet. Click to refresh")
-          return;
+
+ // store search history, only want to store 5
+let browserHistory = JSON.parse(window.localStorage.getItem("history")) || [];
+    for (let i = 0; i < 6; i++) {
+        createButton(browserHistory[i]);//the button name will be the city name from the array
     }
-    else{
-    for (var i = 0; i < favoritesList.length; i++) {
-     
-      var viewFavorites = `
-    <p class="searchHistoryList">${favoritesList[i].name}</p>`
-      $("#cities").append(viewFavorites);
- 
-        }    
-      }
-}
 
-// Clicking on a button in the search history sidebar
-// will populate the dashboard with info on that city
-$(".searchHistoryList").on("click","button", function() {
-  console.log("You clicked the button")
-  console.log($(this).data("value"));
-  var value = $(this).data("value");
- getLatLonAgain(value)
 
+   //if you click search 
+$("#searchBtn").on("click", function (event) {
+  event.preventDefault();
+  console.log("you clicked the main search button")
+  var weatherCity=($("#searchCity").val());
+  console.log("you pressed search and " + weatherCity + " is what you typed ")
+  searchOpenWeather(weatherCity);
 });
+
+    // creates a new row for each city in the search history. cap it at 5.
+function createButton(city) {
+      let newButton = $("<button>").addClass("btn citybtn").text(city);
+      newButton.val(city);
+      $("#cityList").append(newButton);
+}
+//if you click a city in the recent searches section, it should also send you to the starter function to convert city to Lat/Lon
+$(document).on("click", ".citybtn", function () {
+  console.log("You clicked the citybtn")
+  searchOpenWeather($(this).val());
+  console.log("You clicked the citybtn")
+});
+
+})
+
+//
+
+  
+// Clicking on a button in the search history sidebar
+// will populate the dashboard with info on that city.
+
       //need to improve this local storage functionality.
-function buttonClickHandler(event){
+/*function buttonClickHandler(event){
   event.preventDefault();
     $('#dailyContainer').empty();
     $('#currentWeather').empty();
@@ -174,16 +176,6 @@ function buttonClickHandler(event){
         else {
             getLatLon(city.value);
         }
-}
-
-function viewFavorites(){
-  window.location.reload();
-}
+}*/
 //Displays on page load - event listener for the search button, and init() function runs to view and update local storage. 
-
-document.querySelector(".list-group-flush").addEventListener("click", viewFavorites);
-document.getElementById('btn').addEventListener("click", buttonClickHandler);
-getFavorites();
-
-
 

@@ -49,19 +49,21 @@
               Look up a city!
             </div>
           <!--Enter your city name here-->
+          
           <form class=" was-validated testing">
             <div class="mb-3 ">
-              <input class="form-control inputCity" id="city" placeholder="City Name!"></input>
+              <input class="form-control inputCity" id="searchCity" placeholder="City Name!"></input>
               <div class="feedback"></div>
+
             </div>
             <!--Search button-->
           <div class="mb-3">
-            <button class="btn btn-primary" id="btn" type="submit" style="width:100%" >Search</button>
+            <button class="btn btn-primary" id="searchBtn" type="submit" style="width:100%" >Search</button>
           </div>
-          <!--Filled by local storage-->
+          <!--Filled by local storage--history info!-->
           <div class="card ">
-            <ul class="list-group text-center list-group-flush" id="cities"><u>Click to view history
-            </u>
+            <ul class="list-group text-center list-group-flush">Recent Searches
+            <div id="cityList" class="list-group list-group text-center list-group-flush"></div>
            
             </ul>
           </div>
