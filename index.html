@@ -53,6 +53,7 @@
           <form class=" was-validated testing">
             <div class="mb-3 ">
               <input class="form-control inputCity" id="searchCity" placeholder="City Name!"></input>
+              <button class="btn btn-primary searchAgain" type="submit" style="width:100%" >Search Again</button>
               <div class="feedback"></div>
 
             </div>
@@ -62,9 +63,10 @@
           </div>
           <!--Filled by local storage--history info!-->
           <div class="card ">
-            <ul class="list-group text-center list-group-flush">Recent Searches
+            <ul class="list-group text-center list-group-flush"><b>Recent Searches</b>
             <div id="cityList" class="list-group list-group text-center list-group-flush"></div>
-           
+           <button class="button btn btn-primary clearList">Clear Searches</button>
+           <br>
             </ul>
           </div>
         </form>

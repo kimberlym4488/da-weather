@@ -14,12 +14,14 @@ This site allows you to view current weather and a five day forecast. As a new d
 ## Home Page
 (Click Image to see live page)
 
->[![Preview-Image-1](https://user-images.githubusercontent.com/92805933/145954452-9798cf11-f2d7-4e85-9648-7cc1c7792f61.PNG)](https://kimberlym4488.github.io/da-weather/)
+>[![Preview-Image-1](https://user-images.githubusercontent.com/92805933/147866441-f115aaca-fce6-4172-9d16-6045e22b56ed.PNG)
+)
 
-## Local Storage - Save
+## Local Storage and Full Forecast
 (Click Image to see live page)
 
->[![Preview-Image-2](https://user-images.githubusercontent.com/92805933/145954504-d07faf35-c326-404d-9532-0dad5c32e098.PNG)](https://kimberlym4488.github.io/da-weather/)
+>[![Preview-Image-2](https://user-images.githubusercontent.com/92805933/147866644-11456e69-fe8a-4c8a-a50f-237425f182ee.PNG)
+)
 
 # Features
 "da-Weather!" will show the current weather along with a 5day forecast. Cute icons give you a visual feeling to the weather as well.

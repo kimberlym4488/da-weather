@@ -15,8 +15,6 @@ function displayTime() {
     timeDisplayEl.text(now);
 }
 
-console.log("page loaded")
-
 //Displays the current day!
 setInterval(displayTime, 1000);
 var today = moment().format("dddd");
@@ -39,9 +37,7 @@ function getWeather(latitude, longitude) {
 
  //Adds content into the current weather card    
 function printMainContainer(data){
-
-  console.log(data)
-    
+   
     fiveDayForecast.textContent="Here's your 5 day forecast!"
     $('#dailyContainer').empty();
     $('#currentWeather').empty();
@@ -94,6 +90,7 @@ else {
     }
 }   
 
+
 //Get the latitude and longitude when a city name is entered.
 function searchOpenWeather(city){
 console.log(city)
@@ -102,14 +99,14 @@ console.log(city)
     fetch(requestUrl)
     .then(async function (response) {
       var data = await response.json();
+
+    //prevents dup cities and add this city.
+    if (browserHistory.indexOf(city) === -1) {
+      browserHistory.push(city);
+      window.localStorage.setItem("history", JSON.stringify(browserHistory));
+  } 
   
-      //prevents dup cities and add this city.
-      if (browserHistory.indexOf(city) === -1) {
-        browserHistory.push(city);
-        window.localStorage.setItem("history", JSON.stringify(browserHistory));
-       window.location.reload();
-      } 
-     //create variables for each item we'll need to populate our html   
+    //create variables for each item we'll need to populate our html   
         latitude = data[0].lat;
         longitude = data[0].lon;
         cityName=data[0].name;
@@ -121,37 +118,60 @@ console.log(city)
       
  // store search history, only want to store 5
 let browserHistory = JSON.parse(window.localStorage.getItem("history")) || [];
-    for (let i = 0; i < 6; i++) {
-        createButton(browserHistory[i]);//the button name will be the city name from the array
+    for (let i = 0; i < 5; i++) {
+        createButton(browserHistory[i]);
+        //the button name will be the city name from the array
     }
-
 
    //if you click search 
 $("#searchBtn").on("click", function (event) {
-  event.preventDefault();
+ event.preventDefault();
   console.log("you clicked the main search button")
-  var weatherCity=($("#searchCity").val());
-  console.log("you pressed search and " + weatherCity + " is what you typed ")
-  searchOpenWeather(weatherCity);
+  var city=($("#searchCity").val());
+  console.log("you pressed search and " + city + " is what you typed ");
+  $("#searchCity").hide();
+  $(".searchAgain").show();
+  searchOpenWeather(city);
 });
 
-    // creates a new row for each city in the search history. cap it at 5.
+// creates a new row for each city in the search history. Should only be five total, per our for loop above.
 function createButton(city) {
       let newButton = $("<button>").addClass("btn citybtn").text(city);
       newButton.val(city);
       $("#cityList").append(newButton);
 }
+
 //if you click a city in the recent searches section, it should also send you to the starter function to convert city to Lat/Lon
 $(document).on("click", ".citybtn", function (event) {
   event.preventDefault();
   console.log("You clicked the citybtn")
   searchOpenWeather($(this).val());
-  console.log("You clicked the citybtn")
 });
 
+$(document).on("click", ".clearList", function (event) {
+  event.preventDefault();
+  console.log("You clicked the citybtn")
+  $("#cityList").empty();
+  localStorage.clear();
+  document.location.reload();
 })
 
-//
+$("#searchAgain").on("click", function (){
+  $("#searchCity").show();
+})
+//event listener for clicking the search button
+/*$("#searchBtn").on("click", function (event) {
+  event.preventDefault();
+  console.log("you clicked the main search button")
+  var weatherCity=($("#searchCity").val());
+  console.log("you pressed search and " + weatherCity + " is what you typed ");
+  searchOpenWeather(weatherCity);
+});*/
+
+});
+
+
+   //if you click search 
 
   
 // Clicking on a button in the search history sidebar

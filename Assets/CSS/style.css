@@ -1,6 +1,5 @@
 *{
-    background-color:none;
-    text-shadow:1px 1px 0 rgba(255, 255, 255, 0.4);
+    background-color:non;
 
 }
 /*Was trying to add a background image but failed*/
@@ -61,6 +60,7 @@ p{
     background-color: white;
 }
 
+
 #fiveDayForecast{
     size:small;
    padding-top:1rem;
@@ -72,7 +72,6 @@ p{
 }
 /*Icons for weather types*/
 #icon{
-    border-bottom:#467599 3px solid;
     background-color:transparent;
  }
 /*Borders and sizing for five days*/
@@ -133,5 +132,12 @@ p{
      height:4rem;
      width:auto;
      padding:0rem;
+ }
 
+ .clearList{
+     background-color:teal;
+ }
+
+ .searchAgain{
+     display:none;
  }
