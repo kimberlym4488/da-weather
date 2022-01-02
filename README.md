@@ -24,22 +24,20 @@ This site allows you to view current weather and a five day forecast. As a new d
 )
 
 # Features
-"da-Weather!" will show the current weather along with a 5day forecast. Cute icons give you a visual feeling to the weather as well.
+"da-Weather!" shows the current weather along with a 5day forecast. Cute icons give you a visual feeling to the weather as well.
 
 &#10004; Local storage allows you to quickly search previous cities again.
 
 &#10004; Current date and time always updates in the navBar.
 
-&#10004; 5 day forecast boxes are in nicely spaced, clearly defined sections.
+&#10004; 5 day forecast boxes are in nicely spaced, clearly defined sections. They are also mobile responsive! 
 
 &#10004; The city you enter and the day of the week appear in the header after you search.
 
-&#10004; Dark blue color palette and subtle borders make for clean styling.
+&#10004; Sky blue color palette and subtle borders make for clean styling.
 
 ## Summary
 "da-Weather" was really fun to work on! I did struggle quite a bit with local storage but I felt really good about dynamically populating the 5 day forecast boxes using jQuery and template literals. This really strengthened my ability to use template literals to return specific API data to the page. 
-
-I intend to work more on the local storage and add in a nice background image as well.  
 
 ## Author Name
 Kim Moran
